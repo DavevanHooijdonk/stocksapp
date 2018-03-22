@@ -1,0 +1,66 @@
+<div class="text-center stocks-top">
+    <h1><i class="fa fa-line-chart"></i> Stocks <i class="fa fa-bar-chart"></i></h1>
+    <button type="button" class="btn btn-primary pull-right" style="margin-bottom: 1em" (click)="logout()">Logout <i class="fa fa-sign-out"></i></button>
+</div>
+
+
+<div>
+    <table class="table table-bordered text-center">
+        <thead class="stocks-top">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Currency</th>
+            <th scope="col">Last Updated</th>
+            <th *ngIf="admin" scope="col">Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let stock of stockPage?._embedded?.stockList">
+            <th scope="row">{{stock.id}}</th>
+            <td>{{stock.name}}</td>
+            <td>{{stock.currentPrice.amount}}</td>
+            <td>{{stock.currentPrice.currency}}</td>
+            <td>{{stock.lastUpdate | date :'medium'}}</td>
+            <td *ngIf="admin">
+                <span (click)="edit(stock)">
+                    <i class="fa fa-pencil-square-o fa-1-5x"></i>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="btn-group pull-left">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled': (page <= 1)}">
+                <a class="page-link" (click)="firstPage()">First</a>
+            </li>
+            <li class="page-item" [ngClass]="{'disabled': (page <= 1)}">
+                <a class="page-link" (click)="prevPage()">Prev</a>
+            </li>
+            <li class="page-item" *ngFor="let pageNumber of pageNumbers">
+                <a class="page-link" (click)="setPage(pageNumber)">{{pageNumber}}</a>
+            </li>
+            <li class="page-item" [ngClass]="{'disabled': (page >= stockPage?.totalPages)}">
+                <a class="page-link" (click)="nextPage()">Next</a>
+            </li>
+            <li class="page-item" [ngClass]="{'disabled': (page >= stockPage?.totalPages)}">
+                <a class="page-link" (click)="lastPage()">Last</a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn-toolbar pull-right">
+        <button *ngIf="admin" type="button" class="btn btn-primary" (click)="add()">Add <i class="fa fa-plus"></i></button>
+        <div class="btn-group shift-left" dropdown [dropup]=true>
+            <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                Stocks per page
+            </button>
+            <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem">
+                    <a class="dropdown-item text-center" *ngFor="let itemsPerPage of [10,20,30,40,50]" (click)="setPageSize(itemsPerPage)">{{itemsPerPage}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "name": "Lord Banana",
+  "currentPrice": {
+    "amount": 10.00,
+    "currency": "USD"
+  }
+}

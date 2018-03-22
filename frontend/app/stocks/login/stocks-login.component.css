@@ -1,0 +1,30 @@
+.centered {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    padding: 15px;
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+}
+
+.stocks-title {
+    color: #495057;
+}
+
+.stocks-logo {
+    margin-top: 27px;
+    margin-bottom: 54px;
+    font-size: 32px;
+    color: #007bff;
+    background-color: #fff;
+    border: 4px solid #007bff;
+}
+
+.last-row {
+     margin-bottom: 0;
+ }
+
+.checklabel {
+    font-weight: 100;
+}

@@ -1,0 +1,23 @@
+<div class="container centered">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 card card-body bg-light container">
+        <form role="form">
+            <div class="form-group text-center">
+                <h2 class="stocks-title">Stocks App</h2>
+                <div class="stocks-logo">
+                    <i class="fa fa-line-chart fa-5x"></i>
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <span class=input-group-text><i class="fa fa-user-circle"></i></span>
+                <input type="text" class="form-control input-lg" [(ngModel)]="credentials.username" name="username" id="userid" placeholder="Username">
+            </div>
+            <div class="form-group input-group">
+                <span class=input-group-text><i class="fa fa-key"></i></span>
+                <input type="password" class="form-control input-lg" [(ngModel)]="credentials.password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default btn-lg btn-block btn-primary" (click)="onSubmit()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

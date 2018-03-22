@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="stockForm">
+        <div class="form-group">
+            <label class="center-block">Name:
+                <input class="form-control" formControlName="name">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">Amount:
+                <input class="form-control" formControlName="amount">
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="center-block">Currency:
+                <select formControlName="currency" id="currency">
+                    <option *ngFor="let currency of ['EUR','USD','CAD','AUD','CNY'] " [value]="currency">
+                        {{currency}}
+                    </option>
+                </select>
+            </label>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" (click)="revert()" [disabled]="stockForm?.pristine" class="btn btn-danger">
+        Revert
+    </button>
+    <button type="submit" (click)="onSubmit()" [disabled]="stockForm?.pristine" class="btn btn-primary">
+        Save
+    </button>
+</div>
